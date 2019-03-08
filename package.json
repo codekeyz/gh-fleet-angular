@@ -1,21 +1,15 @@
 {
-  "name": "@coreui/coreui-free-angular-admin-template",
-  "version": "2.0.1",
-  "description": "CoreUI Free Angular 2+ Admin Template",
+  "name": "gh-fleet-angular",
+  "version": "1.0.0",
+  "description": "Admin Panel for GH-Fleet Vehicle Management Service using Angular 7 ",
   "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
+    "name": "Precious Keyz",
+    "url": "https://codekeyz.netlify.com",
+    "github": "https://github.com/codekeyz",
+    "twitter": "https://twitter.com/code_keyz"
   },
-  "contributors": [
-    {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
-    }
-  ],
-  "homepage": "https://coreui.io/angular",
-  "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
+  "homepage": "https://codekeyz.netlify.com",
+  "copyright": "Copyright 2019 Precious Keyz",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
