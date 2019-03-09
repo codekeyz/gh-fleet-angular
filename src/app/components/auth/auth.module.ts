@@ -4,13 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthComponent } from './auth.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { SharedModule } from '../../shared/shared.module';
+import { NonAuthGuard } from '../../guards/non-auth.guard';
+import { FormsModule } from '@angular/forms';
 
 const authroutes: Routes = [
   {
     path: '',
     component: AuthComponent,
+    canActivate: [NonAuthGuard],
     children: [
       {
         path: '',
@@ -30,12 +31,7 @@ const authroutes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule.forChild(authroutes),
-    AngularFireAuthModule
-  ],
+  imports: [CommonModule, FormsModule, RouterModule.forChild(authroutes)],
   exports: [RouterModule],
   declarations: [AuthComponent, LoginComponent, RegisterComponent]
 })

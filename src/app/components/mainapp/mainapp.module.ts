@@ -5,11 +5,14 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { DriversComponent } from './drivers/drivers.component';
 import { MainappComponent } from './mainapp.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../../guards/auth.guard';
+import { FormsModule } from '@angular/forms';
 
 const mainapproutes: Routes = [
   {
     path: '',
     component: MainappComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -25,7 +28,7 @@ const mainapproutes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(mainapproutes)],
+  imports: [CommonModule, FormsModule, RouterModule.forChild(mainapproutes)],
   exports: [RouterModule],
   declarations: [
     MainappComponent,
