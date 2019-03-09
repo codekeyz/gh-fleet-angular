@@ -7,12 +7,23 @@ import { MainappComponent } from './mainapp.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../../guards/auth.guard';
 import { FormsModule } from '@angular/forms';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {
+  AppBreadcrumbModule,
+  AppHeaderModule,
+  AppFooterModule,
+  AppSidebarModule
+} from '@coreui/angular';
 
 const mainapproutes: Routes = [
   {
     path: '',
     component: MainappComponent,
     canActivate: [AuthGuard],
+    data: {
+      title: 'Home'
+    },
     children: [
       {
         path: '',
@@ -21,14 +32,27 @@ const mainapproutes: Routes = [
       },
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        data: {
+          title: 'Dashboard'
+        }
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, RouterModule.forChild(mainapproutes)],
+  imports: [
+    CommonModule,
+    AppHeaderModule,
+    AppSidebarModule,
+    AppFooterModule,
+    BsDropdownModule.forRoot(),
+    AppBreadcrumbModule.forRoot(),
+    PerfectScrollbarModule,
+    FormsModule,
+    RouterModule.forChild(mainapproutes)
+  ],
   exports: [RouterModule],
   declarations: [
     MainappComponent,
