@@ -16,6 +16,7 @@ import {
   AppFooterModule,
   AppSidebarModule
 } from '@coreui/angular';
+import { DataBarsComponent } from './dashboard/data-bars/data-bars.component';
 
 const mainapproutes: Routes = [
   {
@@ -60,7 +61,8 @@ const mainapproutes: Routes = [
     MainappComponent,
     DashboardComponent,
     VehiclesComponent,
-    DriversComponent
+    DriversComponent,
+    DataBarsComponent
   ]
 })
 export class MainappModule {}
