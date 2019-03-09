@@ -9,6 +9,7 @@ import { AuthGuard } from '../../guards/auth.guard';
 import { FormsModule } from '@angular/forms';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ChartsModule } from 'ng2-charts';
 import {
   AppBreadcrumbModule,
   AppHeaderModule,
@@ -51,6 +52,7 @@ const mainapproutes: Routes = [
     AppBreadcrumbModule.forRoot(),
     PerfectScrollbarModule,
     FormsModule,
+    ChartsModule,
     RouterModule.forChild(mainapproutes)
   ],
   exports: [RouterModule],
