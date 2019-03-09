@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    CoreModule
   ],
   declarations: [AppComponent],
   providers: [
