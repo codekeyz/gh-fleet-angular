@@ -5,7 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthComponent } from './auth.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NonAuthGuard } from '../../guards/non-auth.guard';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const authroutes: Routes = [
   {
@@ -31,7 +31,12 @@ const authroutes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, RouterModule.forChild(authroutes)],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(authroutes)
+  ],
   exports: [RouterModule],
   declarations: [AuthComponent, LoginComponent, RegisterComponent]
 })
