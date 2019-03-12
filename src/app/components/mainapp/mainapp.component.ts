@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { navItems } from './_nav';
+import { AuthService } from '../../providers/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +15,7 @@ export class MainappComponent implements OnInit {
   public element: HTMLElement = document.body;
   public year = new Date().getFullYear();
 
-  constructor() {
+  constructor(private authSvc: AuthService, private router: Router) {
     this.changes = new MutationObserver(mutations => {
       this.sidebarMinimized = document.body.classList.contains(
         'sidebar-minimized'
@@ -26,4 +28,10 @@ export class MainappComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  logout() {
+    this.authSvc.logout().then(() => {
+      this.router.navigate(['/auth/signin']);
+    });
+  }
 }

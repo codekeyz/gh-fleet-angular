@@ -20,4 +20,9 @@ export class AuthService {
       return null;
     }
   }
+
+  async logout() {
+    await this.tkSt.signOut();
+    return this.afAuth.auth.signOut();
+  }
 }
