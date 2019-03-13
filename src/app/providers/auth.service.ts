@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 import { TokenStorage } from './token.storage';
 import { environment as env } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -19,8 +18,7 @@ export class AuthService {
         email,
         password
       );
-      const userToken = await user.user.getIdTokenResult();
-      await this.tkSt.saveToken(userToken.token);
+      await this.refresh();
       return user;
     } catch (e) {
       return null;
@@ -33,10 +31,15 @@ export class AuthService {
   }
 
   register(username: string, email: string, password: string) {
-    return this.httpSvc.post(`${env.apiBaseUrl}/users/register`, {
+    return this.httpSvc.post(`${env.apiBaseUrl}/api/v1/users/register`, {
       email,
       username,
       password
     });
+  }
+
+  async refresh() {
+    const token = await this.afAuth.auth.currentUser.getIdToken();
+    this.tkSt.saveToken(token);
   }
 }

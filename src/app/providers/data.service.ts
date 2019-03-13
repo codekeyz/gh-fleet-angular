@@ -7,10 +7,10 @@ export class DataService {
   constructor(private httpSvc: HttpClient) {}
 
   getMyAccount<T>() {
-    return this.httpSvc.get<T>(`${env.apiBaseUrl}/users/me`);
+    return this.httpSvc.get<T>(`${env.apiBaseUrl}/api/v1/users/me`);
   }
 
   getMyVehicles<T>() {
-    return this.httpSvc.get<T>(`${env.apiBaseUrl}/users/me/vehicles`);
+    return this.httpSvc.get<T>(`${env.apiBaseUrl}/api/v1/users/me/vehicles`);
   }
 }
