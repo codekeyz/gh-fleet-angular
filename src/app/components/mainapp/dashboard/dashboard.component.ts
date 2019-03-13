@@ -10,7 +10,7 @@ import {
 } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-dashyboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
@@ -27,9 +27,5 @@ export class DashboardComponent implements OnInit {
         return JSON.stringify(x.data) === JSON.stringify(y.data);
       })
     );
-
-    this.vehicles$.subscribe(data => {
-      console.log(data);
-    });
   }
 }

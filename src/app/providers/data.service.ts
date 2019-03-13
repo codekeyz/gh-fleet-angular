@@ -10,7 +10,9 @@ export class DataService {
     return this.httpSvc.get<T>(`${env.apiBaseUrl}/api/v1/users/me`);
   }
 
-  getMyVehicles<T>() {
-    return this.httpSvc.get<T>(`${env.apiBaseUrl}/api/v1/users/me/vehicles`);
+  getMyVehicles<T>(params?: {}) {
+    return this.httpSvc.get<T>(`${env.apiBaseUrl}/api/v1/users/me/vehicles`, {
+      params
+    });
   }
 }
