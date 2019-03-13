@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
     this.returnUrl =
       this.route.snapshot.queryParams.returnUrl || '/me/dashboard';
 
-    this.email = this.route.snapshot.queryParams.email;
+    // get return email from route parameters or default to ''
+    this.email = this.route.snapshot.queryParams.email || '';
 
     this.progressRef = this.progress.ref('authProgress');
 
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
   createForm() {
     this.loginForm = this.fb.group({
       email: [
-        this.email || '',
+        this.email,
         Validators.compose([Validators.required, Validators.email])
       ],
       password: [
