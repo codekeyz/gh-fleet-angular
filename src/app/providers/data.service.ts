@@ -9,4 +9,8 @@ export class DataService {
   getMyAccount() {
     return this.httpSvc.get(`${env.apiBaseUrl}/users/me`);
   }
+
+  getMyVehicles() {
+    return this.httpSvc.get(`${env.apiBaseUrl}/users/me/vehicles`);
+  }
 }
