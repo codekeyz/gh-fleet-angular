@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../providers/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgProgress, NgProgressRef } from '@ngx-progressbar/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,14 +10,16 @@ import { NgProgress, NgProgressRef } from '@ngx-progressbar/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  email = '';
-  password = '';
+  loginForm: FormGroup;
+
   returnUrl: string;
+  email: string;
   progressRef: NgProgressRef;
 
   enableLogin = true;
 
   constructor(
+    private fb: FormBuilder,
     private progress: NgProgress,
     private route: ActivatedRoute,
     private router: Router,
@@ -28,14 +31,33 @@ export class LoginComponent implements OnInit {
     this.returnUrl =
       this.route.snapshot.queryParams.returnUrl || '/me/dashboard';
 
-    this.progressRef = this.progress.ref('myProgress');
+    this.email = this.route.snapshot.queryParams.email;
+
+    this.progressRef = this.progress.ref('authProgress');
+
+    this.createForm();
+  }
+
+  createForm() {
+    this.loginForm = this.fb.group({
+      email: [
+        this.email || '',
+        Validators.compose([Validators.required, Validators.email])
+      ],
+      password: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(5)])
+      ]
+    });
   }
 
   login() {
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
     this.enableLogin = false;
     this.progressRef.start();
     this.authSvc
-      .login(this.email, this.password)
+      .login(email, password)
       .then(() => {
         this.enableLogin = true;
         this.progressRef.complete();

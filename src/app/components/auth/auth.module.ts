@@ -5,7 +5,8 @@ import { RegisterComponent } from './register/register.component';
 import { AuthComponent } from './auth.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NonAuthGuard } from '../../guards/non-auth.guard';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgProgressModule } from '@ngx-progressbar/core';
 
 const authroutes: Routes = [
   {
@@ -33,7 +34,7 @@ const authroutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    NgProgressModule,
     ReactiveFormsModule,
     RouterModule.forChild(authroutes)
   ],
