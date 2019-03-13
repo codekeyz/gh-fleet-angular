@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://gh-fleet.herokuapp.com/api/v1',
+  apiBaseUrl: 'https://gh-fleet.herokuapp.com',
   firebase: {
     apiKey: 'AIzaSyApY-cfn96TG2qWDd-jabn-JLjywUyqbKI',
     authDomain: 'transport-server-b95ed.firebaseapp.com',
@@ -8,5 +8,7 @@ export const environment = {
     projectId: 'transport-server-b95ed',
     storageBucket: 'transport-server-b95ed.appspot.com',
     messagingSenderId: '880058124951'
-  }
+  },
+  whitelistedDomains: ['gh-fleet.herokuapp.com'],
+  blacklistedRoutes: ['gh-fleet.herokuapp.com/api/v1/users/register']
 };

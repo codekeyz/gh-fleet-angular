@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:4040/api/v1',
+  apiBaseUrl: 'http://localhost:4040',
   firebase: {
     apiKey: 'AIzaSyApY-cfn96TG2qWDd-jabn-JLjywUyqbKI',
     authDomain: 'transport-server-b95ed.firebaseapp.com',
@@ -13,5 +13,7 @@ export const environment = {
     projectId: 'transport-server-b95ed',
     storageBucket: 'transport-server-b95ed.appspot.com',
     messagingSenderId: '880058124951'
-  }
+  },
+  whitelistedDomains: ['localhost:4040'],
+  blacklistedRoutes: ['localhost:4040/api/v1/users/register']
 };
