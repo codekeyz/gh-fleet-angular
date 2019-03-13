@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenStorage } from './providers/token.storage';
 
-function jwtOptionsFactory(tokenStorage: TokenStorage) {
+export function jwtOptionsFactory(tokenStorage: TokenStorage) {
   return {
     tokenGetter: () => {
       return tokenStorage.getToken();
