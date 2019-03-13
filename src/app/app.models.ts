@@ -1,3 +1,7 @@
+export interface DataList<T> {
+  data: T[];
+  count: number;
+}
 export interface Vehicle {
   id: string;
   name: string;
