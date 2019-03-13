@@ -6,6 +6,8 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { TokenStorage } from './token.storage';
+import { tap } from 'rxjs/operators';
+import { P } from '@angular/core/src/render3';
 
 export class AuthHeaderInterceptor implements HttpInterceptor {
   intercept(

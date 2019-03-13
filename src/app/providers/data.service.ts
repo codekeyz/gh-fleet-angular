@@ -6,7 +6,8 @@ import { environment as env } from '../../environments/environment';
 export class DataService {
   constructor(private httpSvc: HttpClient) {}
 
-  getMyAccount() {0']\0]'    return this.http  cgcgcc Svc.get(`${env.apiBaseUrl}/users/me`);
+  getMyAccount<T>() {
+    return this.httpSvc.get<T>(`${env.apiBaseUrl}/users/me`);
   }
 
   getMyVehicles<T>() {
