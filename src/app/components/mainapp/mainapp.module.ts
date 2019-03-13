@@ -9,14 +9,13 @@ import { AuthGuard } from '../../guards/auth.guard';
 import { FormsModule } from '@angular/forms';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { ChartsModule } from 'ng2-charts';
 import {
   AppBreadcrumbModule,
   AppHeaderModule,
   AppFooterModule,
   AppSidebarModule
 } from '@coreui/angular';
-import { DataBarsComponent } from './dashboard/data-bars/data-bars.component';
+import { WidgetOneComponent } from '../widgets/widget-one/widget-one.component';
 
 const mainapproutes: Routes = [
   {
@@ -38,6 +37,20 @@ const mainapproutes: Routes = [
         data: {
           title: 'Dashboard'
         }
+      },
+      {
+        path: 'drivers',
+        component: DriversComponent,
+        data: {
+          title: 'Drivers'
+        }
+      },
+      {
+        path: 'vehicles',
+        component: VehiclesComponent,
+        data: {
+          title: 'Vehicles'
+        }
       }
     ]
   }
@@ -53,7 +66,6 @@ const mainapproutes: Routes = [
     AppBreadcrumbModule.forRoot(),
     PerfectScrollbarModule,
     FormsModule,
-    ChartsModule,
     RouterModule.forChild(mainapproutes)
   ],
   exports: [RouterModule],
@@ -62,7 +74,7 @@ const mainapproutes: Routes = [
     DashboardComponent,
     VehiclesComponent,
     DriversComponent,
-    DataBarsComponent
+    WidgetOneComponent
   ]
 })
 export class MainappModule {}
