@@ -62,7 +62,9 @@ export class RegisterComponent implements OnInit {
       .register(username, email, password)
       .toPromise()
       .then(() => {
-        this.router.navigate(['/auth/signin']);
+        this.router.navigate(['/auth/signin'], {
+          queryParams: { email }
+        });
       })
       .catch(err => {
         console.log(err);
