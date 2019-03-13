@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
 import { DriversComponent } from './drivers/drivers.component';
 import { MainappComponent } from './mainapp.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -47,10 +46,7 @@ const mainapproutes: Routes = [
       },
       {
         path: 'vehicles',
-        component: VehiclesComponent,
-        data: {
-          title: 'Vehicles'
-        }
+        loadChildren: './vehicles/vehicles.module#VehiclesModule'
       }
     ]
   }
@@ -72,7 +68,6 @@ const mainapproutes: Routes = [
   declarations: [
     MainappComponent,
     DashboardComponent,
-    VehiclesComponent,
     DriversComponent,
     WidgetOneComponent
   ]
