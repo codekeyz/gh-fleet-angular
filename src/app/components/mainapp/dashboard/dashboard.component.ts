@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Vehicle } from '../../../app.models';
+import { Observable, interval } from 'rxjs';
+import { Vehicle, DataList } from '../../../app.models';
 import { DataService } from '../../../providers/data.service';
+import {
+  startWith,
+  switchMap,
+  distinctUntilChanged,
+  map
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,13 +15,21 @@ import { DataService } from '../../../providers/data.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  vehicles$: Observable<Vehicle[]>;
+  vehicles$: Observable<DataList<Vehicle>>;
 
   constructor(private dataSvc: DataService) {}
 
   ngOnInit() {
-    this.dataSvc.getMyVehicles<Vehicle[]>().subscribe(res => {
-      console.log(res);
+    this.vehicles$ = interval(5000).pipe(
+      startWith(0),
+      switchMap(() => this.dataSvc.getMyVehicles<DataList<Vehicle>>()),
+      distinctUntilChanged((x, y) => {
+        return JSON.stringify(x.data) === JSON.stringify(y.data);
+      })
+    );
+
+    this.vehicles$.subscribe(data => {
+      console.log(data);
     });
   }
 }
