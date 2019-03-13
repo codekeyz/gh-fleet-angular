@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../providers/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgProgress, NgProgressRef } from '@ngx-progressbar/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +11,18 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  progressRef: NgProgressRef;
 
   constructor(
+    private progress: NgProgress,
     private authSvc: AuthService,
     private fb: FormBuilder,
     private router: Router
   ) {}
 
   ngOnInit() {
+    this.progressRef = this.progress.ref('authProgress');
+
     this.createForm();
   }
 
@@ -53,6 +58,7 @@ export class RegisterComponent implements OnInit {
     const email = this.registerForm.value.email;
     const password = this.registerForm.value.password;
     const username = this.registerForm.value.username;
+    this.progressRef.start();
     this.authSvc
       .register(username, email, password)
       .toPromise()
@@ -61,8 +67,11 @@ export class RegisterComponent implements OnInit {
           queryParams: { email }
         });
       })
+      .then(() => {
+        this.progressRef.complete();
+      })
       .catch(err => {
-        console.log(err);
+        this.progressRef.complete();
       });
   }
 }
