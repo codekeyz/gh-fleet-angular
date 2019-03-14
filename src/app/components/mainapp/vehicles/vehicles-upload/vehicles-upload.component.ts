@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-vehicles-upload',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vehicles-upload.component.scss']
 })
 export class VehiclesUploadComponent implements OnInit {
+  uploadForm: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.createForm();
   }
 
+  createForm() {
+    this.uploadForm = this.fb.group({});
+  }
+
+  upload() {
+    
+  }
 }

@@ -5,9 +5,10 @@ import { VehiclesViewComponent } from './vehicles-view/vehicles-view.component';
 import { VehiclesSingleComponent } from './vehicles-single/vehicles-single.component';
 import { VehiclesUploadComponent } from './vehicles-upload/vehicles-upload.component';
 import { VehiclesComponent } from './vehicles.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, VehicleRoutingModule],
+  imports: [CommonModule, ReactiveFormsModule, VehicleRoutingModule],
   declarations: [
     VehiclesComponent,
     VehiclesViewComponent,
