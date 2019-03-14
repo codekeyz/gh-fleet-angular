@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
@@ -30,9 +32,16 @@ export function jwtOptionsFactory(tokenStorage: TokenStorage) {
   imports: [
     BrowserModule,
     CoreModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    }),
     HttpClientModule,
     NgProgressModule,
-    NgProgressRouterModule,
+    NgProgressRouterModule.withConfig({
+      id: 'masterProgress'
+    }),
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,

@@ -1,7 +1,11 @@
-export interface DataList<T> {
-  data: T[];
+export interface DataList<T> extends Data<T[]> {
   count: number;
 }
+
+export interface Data<T> {
+  data: T;
+}
+
 export interface Vehicle {
   id: string;
   name: string;
@@ -9,10 +13,16 @@ export interface Vehicle {
   archived: boolean;
   fuel_volume_units: string;
   vehicle_type_name: string;
-  owner: {};
+  owner: User;
   images: Image[];
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface User {
+  username: string;
+  email: string;
+  telephone: string;
 }
 
 export interface Image {

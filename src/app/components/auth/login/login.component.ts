@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     // get return email from route parameters or default to ''
     this.email = this.route.snapshot.queryParams.email || '';
 
-    this.progressRef = this.progress.ref('authProgress');
+    this.progressRef = this.progress.ref('masterProgress');
 
     this.createForm();
   }

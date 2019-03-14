@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.progressRef = this.progress.ref('authProgress');
+    this.progressRef = this.progress.ref('masterProgress');
 
     this.createForm();
   }

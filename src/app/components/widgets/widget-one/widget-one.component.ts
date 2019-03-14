@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WidgetOneComponent implements OnInit {
   @Input() title: string;
 
+  @Input() icon: string;
+
   @Input() value: string;
 
   @Input() moreText: string;

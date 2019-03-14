@@ -15,4 +15,11 @@ export class DataService {
       params
     });
   }
+
+  addVehicle<T>(data: {}) {
+    return this.httpSvc.post<T>(
+      `${env.apiBaseUrl}/api/v1/users/me/vehicles`,
+      data
+    );
+  }
 }
