@@ -2,12 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, interval } from 'rxjs';
 import { Vehicle, DataList } from '../../../app.models';
 import { DataService } from '../../../providers/data.service';
-import {
-  startWith,
-  switchMap,
-  distinctUntilChanged,
-  map
-} from 'rxjs/operators';
+import { startWith, switchMap, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashyboard',
