@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-vehicles-upload',
@@ -16,10 +16,30 @@ export class VehiclesUploadComponent implements OnInit {
   }
 
   createForm() {
-    this.uploadForm = this.fb.group({});
+    this.uploadForm = this.fb.group({
+      name: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(5)])
+      ],
+      type: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(5)])
+      ],
+      model: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(5)])
+      ],
+      color: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(5)])
+      ],
+      license: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(5)])
+      ],
+      volume: ['Litres', Validators.compose([Validators.required])]
+    });
   }
 
-  upload() {
-    
-  }
+  upload() {}
 }

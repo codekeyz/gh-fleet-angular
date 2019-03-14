@@ -1,40 +1,97 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="card">
-      <div class="card-header">
-        <strong>Add New Vehicle</strong>
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-5 col-md-5">
+      <div class="card p-4">
+        <div class="card-body"></div>
       </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-5 col-md-5">
-            <div class="card p-4">
-              <div class="card-body"></div>
+      <div class="row">
+        <div class="col-sm-4 col-md-4">
+          <div class="card p-0">
+            <div class="card-body"></div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+          <div class="card p-0">
+            <div class="card-body"></div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+          <div class="card p-0">
+            <div class="card-body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7 col-md-7">
+      <div class="card border-dark">
+        <div class="card-header bg-dark">Provide Vehicle Details</div>
+        <div class="card-body">
+          <form (submit)="upload()" [formGroup]="uploadForm">
+            <div class="form-group">
+              <label for="company">Vehicle Name</label
+              ><input
+                formControlName="name"
+                class="form-control border-dark"
+                placeholder="Enter your vehicle name"
+                type="text"
+              />
             </div>
+
             <div class="row">
-              <div class="col-sm-4 col-md-4">
-                <div class="card p-0">
-                  <div class="card-body"></div>
-                </div>
+              <div class="form-group col-md-4">
+                <label for="vat">Type</label
+                ><input
+                  formControlName="type"
+                  class="form-control border-dark"
+                  placeholder="TATA, Ford etc."
+                  type="text"
+                />
               </div>
-              <div class="col-sm-4 col-md-4">
-                <div class="card p-0">
-                  <div class="card-body"></div>
-                </div>
+              <div class="form-group col-md-4">
+                <label for="vat">Model</label
+                ><input
+                  formControlName="model"
+                  class="form-control border-dark"
+                  placeholder="TATA, Ford etc."
+                  type="text"
+                />
               </div>
-              <div class="col-sm-4 col-md-4">
-                <div class="card p-0">
-                  <div class="card-body"></div>
-                </div>
+              <div class="form-group col-md-4">
+                <label for="company">Color</label
+                ><input
+                  formControlName="color"
+                  class="form-control border-dark"
+                  placeholder="Enter your vehicle color"
+                  type="color"
+                />
               </div>
             </div>
-          </div>
-          <div class="col-sm-7 col-md-7">
-            <div class="card p-4">
-              <div class="card-body">
-                <form (submit)="upload()" [formGroup]="uploadForm"></form>
-              </div>
+            <div class="form-group">
+              <label for="vat">License Number</label
+              ><input
+                formControlName="license"
+                class="form-control border-dark"
+                placeholder="TATA, Ford etc."
+                type="text"
+              />
             </div>
-          </div>
+            <div class="form-group">
+              <label for="ccmonth">Fuel Volume Unit</label
+              ><select
+                class="form-control border-dark"
+                formControlName="volume"
+                id="ccmonth"
+                ><option>US Gallons</option
+                ><option>UK Gallons</option
+                ><option>Litres</option>
+              </select>
+            </div>
+            <div class="form-group mb-3 mb-xl-0">
+              <button class="btn btn-square btn-block btn-dark" type="submit">
+                SUBMIT
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
