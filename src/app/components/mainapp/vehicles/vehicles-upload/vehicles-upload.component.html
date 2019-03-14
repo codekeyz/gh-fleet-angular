@@ -30,7 +30,9 @@
             <div class="form-group">
               <label for="company">Vehicle Name</label
               ><input
+                style="text-transform:capitalize"
                 formControlName="name"
+                value=""
                 class="form-control border-dark"
                 placeholder="Enter your vehicle name"
                 type="text"
@@ -41,6 +43,7 @@
               <div class="form-group col-md-4">
                 <label for="vat">Type</label
                 ><input
+                  style="text-transform:capitalize"
                   formControlName="type"
                   class="form-control border-dark"
                   placeholder="TATA, Ford etc."
@@ -50,6 +53,7 @@
               <div class="form-group col-md-4">
                 <label for="vat">Model</label
                 ><input
+                  style="text-transform:capitalize"
                   formControlName="model"
                   class="form-control border-dark"
                   placeholder="TATA, Ford etc."
@@ -59,6 +63,7 @@
               <div class="form-group col-md-4">
                 <label for="company">Color</label
                 ><input
+                  style="text-transform:capitalize"
                   formControlName="color"
                   class="form-control border-dark"
                   placeholder="Enter your vehicle color"
@@ -78,6 +83,7 @@
             <div class="form-group">
               <label for="ccmonth">Fuel Volume Unit</label
               ><select
+                style="text-transform:capitalize"
                 class="form-control border-dark"
                 formControlName="volume"
                 id="ccmonth"
@@ -87,7 +93,11 @@
               </select>
             </div>
             <div class="form-group mb-3 mb-xl-0">
-              <button class="btn btn-square btn-block btn-dark" type="submit">
+              <button
+                class="btn btn-square btn-block btn-dark"
+                [disabled]="!uploadForm.valid"
+                type="submit"
+              >
                 SUBMIT
               </button>
             </div>
