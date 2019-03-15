@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgProgressRef, NgProgress } from '@ngx-progressbar/core';
 import { DataService } from '../../../../providers/data.service';
 import { ToastrService } from 'ngx-toastr';
 import { Data, Vehicle } from '../../../../app.models';
+import { FileUploader, FileLikeObject } from 'ng2-file-upload/ng2-file-upload';
+import { TokenStorage } from '../../../../providers/token.storage';
 
 @Component({
   selector: 'app-vehicles-upload',
@@ -11,11 +13,23 @@ import { Data, Vehicle } from '../../../../app.models';
   styleUrls: ['./vehicles-upload.component.scss']
 })
 export class VehiclesUploadComponent implements OnInit {
+  public uploader: FileUploader = new FileUploader({
+    url: '/`',
+    authTokenHeader: 'Account-Token',
+    authToken: this.TokenSto.getToken(),
+    disableMultipart: false,
+    autoUpload: false,
+    method: 'post',
+    itemAlias: 'images',
+    allowedFileType: ['image']
+  });
+
+  reader = new FileReader();
   uploadForm: FormGroup;
-  uploadImageForm: FormGroup;
   progressRef: NgProgressRef;
 
   constructor(
+    private TokenSto: TokenStorage,
     private toastr: ToastrService,
     private fb: FormBuilder,
     private progress: NgProgress,
@@ -24,8 +38,10 @@ export class VehiclesUploadComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-
     this.progressRef = this.progress.ref('masterProgress');
+    this.uploader.onProgressItem = (progress: any) => {
+      console.log(progress['progress']);
+    };
   }
 
   createForm() {
@@ -51,10 +67,6 @@ export class VehiclesUploadComponent implements OnInit {
         ])
       ],
       volume: ['Litres', Validators.compose([Validators.required])]
-    });
-
-    this.uploadImageForm = this.fb.group({
-      imageOne: ['', Validators.required]
     });
   }
 
@@ -98,5 +110,8 @@ export class VehiclesUploadComponent implements OnInit {
       });
   }
 
-  uploadImages() {}
+  public onFileSelected(event: EventEmitter<File[]>) {
+    const file: File = event[0];
+    console.log(file);
+  }
 }

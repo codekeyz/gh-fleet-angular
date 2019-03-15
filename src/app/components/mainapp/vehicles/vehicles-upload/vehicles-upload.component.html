@@ -1,7 +1,7 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="col-sm-7 col-md-7">
-      <div class="card border-dark">
+      <div class="card">
         <div class="card-header bg-dark">Provide Vehicle Details</div>
         <div class="card-body">
           <form (submit)="upload()" [formGroup]="uploadForm">
@@ -85,34 +85,62 @@
         </div>
       </div>
     </div>
-
     <div class="col-sm-5 col-md-5">
-      <div class="card border-dark">
+      <div class="card">
         <div class="card-header bg-dark">
           Upload Vehicle Images
         </div>
         <div class="card-body">
-          <form
-            (submit)="uploadImages()"
-            class="form-horizontal"
-            [formGroup]="uploadImageForm"
-          >
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label">Static</label>
-              <div class="col-md-9">
-                <p class="form-control-static">Username</p>
+          <div class="form-group" *ngFor="let item of uploader.queue">
+            <div class="media-left">
+              <img
+                width="50"
+                height="50"
+                src=""
+                imgPreview
+                [image]="item?._file"
+                class="media-object"
+              />
+            </div>
+            <div class="clearfix">
+              <div class="float-left">
+                <strong> {{ item?.file?.name | titlecase }} </strong>
+              </div>
+              <div class="float-right">
+                <small class="text-muted">
+                  {{ item?.file?.size / 1024 / 1024 | number: '.2' }} MB
+                </small>
+                <button
+                  (click)="item.remove()"
+                  class="btn btn-brand btn-sm btn-danger mr-1"
+                  style="margin-bottom: 4px"
+                  type="button"
+                >
+                  <i class="fa fa-remove"></i>
+                </button>
               </div>
             </div>
-          </form>
+            <progressbar [value]="item.progress" [animate]="true"></progressbar>
+          </div>
+          <span class="hidden-file">
+            <input
+              type="file"
+              #fileInput
+              multiple
+              ng2FileSelect
+              [uploader]="uploader"
+              (onFileSelected)="onFileSelected($event)"
+            />
+          </span>
+          <button
+            class="btn btn-dark btn-lg btn-solid"
+            type="button"
+            (click)="fileInput.click()"
+          >
+            <i class="fa fa-upload"></i>
+            Select Images
+          </button>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <input #file type="file" accept="image/*" />
-          <input #file type="file" accept="image/*" />
-          <input #file type="file" accept="image/*" />
-        </div>
-        <!-- (change)="preview(file.files)" -->
       </div>
     </div>
   </div>
