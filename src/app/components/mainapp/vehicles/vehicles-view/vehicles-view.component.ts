@@ -17,7 +17,7 @@ export class VehiclesViewComponent implements OnInit {
   ngOnInit() {
     this.vehicles$ = interval(10000).pipe(
       startWith(0),
-      switchMap(() => this.dataSvc.getMyVehicles()),
+      switchMap(() => this.dataSvc.getMyVehicles<DataList<Vehicle>>()),
       distinctUntilChanged((x, y) => {
         return JSON.stringify(x.data) === JSON.stringify(y.data);
       })
