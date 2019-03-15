@@ -10,15 +10,17 @@ import { DataService } from '../../../../providers/data.service';
   styleUrls: ['./vehicles-view.component.scss']
 })
 export class VehiclesViewComponent implements OnInit {
+  vehicles$: Observable<DataList<Vehicle>>;
+
   constructor(private dataSvc: DataService) {}
 
   ngOnInit() {
-    // this.vehicles$ = interval(5000).pipe(
-    //   startWith(0),
-    //   switchMap(() => this.dataSvc.getMyVehicles()),
-    //   distinctUntilChanged((x, y) => {
-    //     return JSON.stringify(x.data) === JSON.stringify(y.data);
-    //   })
-    // );
+    this.vehicles$ = interval(10000).pipe(
+      startWith(0),
+      switchMap(() => this.dataSvc.getMyVehicles()),
+      distinctUntilChanged((x, y) => {
+        return JSON.stringify(x.data) === JSON.stringify(y.data);
+      })
+    );
   }
 }

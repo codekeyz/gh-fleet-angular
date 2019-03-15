@@ -7,11 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./vehicles.component.scss']
 })
 export class VehiclesComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit() {}
-
-  addVehicle() {
-    this.router.navigate(['me/vehicles/add-new']);
-  }
 }

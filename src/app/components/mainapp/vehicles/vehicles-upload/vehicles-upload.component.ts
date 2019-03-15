@@ -12,6 +12,7 @@ import { Data, Vehicle } from '../../../../app.models';
 })
 export class VehiclesUploadComponent implements OnInit {
   uploadForm: FormGroup;
+  uploadImageForm: FormGroup;
   progressRef: NgProgressRef;
 
   constructor(
@@ -41,15 +42,19 @@ export class VehiclesUploadComponent implements OnInit {
         '',
         Validators.compose([Validators.required, Validators.minLength(3)])
       ],
-      color: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(3)])
-      ],
+      color: [''],
       license: [
         '',
-        Validators.compose([Validators.required, Validators.minLength(3)])
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(/^([a-zA-Z]){2}(-| )[0-9]{4}(-| )[0-9]{2}$/)
+        ])
       ],
       volume: ['Litres', Validators.compose([Validators.required])]
+    });
+
+    this.uploadImageForm = this.fb.group({
+      imageOne: ['', Validators.required]
     });
   }
 
@@ -92,4 +97,6 @@ export class VehiclesUploadComponent implements OnInit {
         console.log(err);
       });
   }
+
+  uploadImages() {}
 }

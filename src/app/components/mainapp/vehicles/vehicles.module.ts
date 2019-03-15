@@ -6,9 +6,19 @@ import { VehiclesSingleComponent } from './vehicles-single/vehicles-single.compo
 import { VehiclesUploadComponent } from './vehicles-upload/vehicles-upload.component';
 import { VehiclesComponent } from './vehicles.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, VehicleRoutingModule],
+  imports: [
+    CommonModule,
+    PaginationModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    CarouselModule,
+    ReactiveFormsModule,
+    VehicleRoutingModule
+  ],
   declarations: [
     VehiclesComponent,
     VehiclesViewComponent,
