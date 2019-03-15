@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   constructor(private dataSvc: DataService) {}
 
   ngOnInit() {
-    this.vehicles$ = interval(5000).pipe(
+    this.vehicles$ = interval(10000).pipe(
       startWith(0),
       switchMap(() => this.dataSvc.getMyVehicles<DataList<Vehicle>>()),
       distinctUntilChanged((x, y) => {

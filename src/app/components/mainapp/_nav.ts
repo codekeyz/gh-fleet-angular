@@ -7,7 +7,19 @@ export const navItems = [
   {
     name: 'Vehicles',
     url: '/me/vehicles',
-    icon: 'fa fa-car'
+    icon: 'fa fa-car',
+    children: [
+      {
+        name: 'View',
+        url: '/me/vehicles/view',
+        icon: 'icon-eye'
+      },
+      {
+        name: 'Add New',
+        url: '/me/vehicles/add-new',
+        icon: 'fa fa-plus'
+      }
+    ]
   },
   {
     name: 'Drivers',
