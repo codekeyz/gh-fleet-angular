@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of (vehicles$ | async)?.data as list">
+          <tr *ngFor="let vehicle of (vehicles$ | async)?.data">
             <td class="text-center">
               <div class="avatar">
                 <img
@@ -30,19 +30,19 @@
               </div>
             </td>
             <td>
-              <div>{{ item.name }}</div>
+              <div>{{ vehicle.name }}</div>
               <div class="small text-muted"><span>New</span> | Registered:</div>
             </td>
             <td>
               <div>
-                {{ item.vehicle_type_model }}
+                {{ vehicle.vehicle_type_model }}
               </div>
             </td>
             <td>
-              <div>{{ item.vehicle_type_name }}</div>
+              <div>{{ vehicle.vehicle_type_name }}</div>
             </td>
             <td>
-              <div>{{ item.license_plate }}</div>
+              <div>{{ vehicle.license_plate }}</div>
             </td>
             <td>
               <div class="btn-group float-right" dropdown>
@@ -56,11 +56,11 @@
                   <span class="sr-only">Split button!</span>
                 </button>
                 <ul *dropdownMenu class="dropdown-menu" role="menu">
-                  <li role="menuitem">
-                    <a class="dropdown-item" href="#">Edit</a>
+                  <li role="menuvehicle">
+                    <a class="dropdown-vehicle" href="#">Edit</a>
                   </li>
-                  <li role="menuitem">
-                    <a class="dropdown-item" href="#">Delete</a>
+                  <li role="menuvehicle">
+                    <a class="dropdown-vehicle" href="#">Delete</a>
                   </li>
                 </ul>
               </div>
