@@ -13,6 +13,8 @@ export interface Vehicle {
   archived: boolean;
   fuel_volume_units: string;
   vehicle_type_name: string;
+  vehicle_type_model: string;
+  license_plate: string;
   owner: User;
   images: Image[];
   createdAt: Date;
