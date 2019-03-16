@@ -14,7 +14,6 @@ import { TokenStorage } from '../../../../providers/token.storage';
 })
 export class VehiclesUploadComponent implements OnInit {
   public uploader: FileUploader = new FileUploader({
-    url: '/`',
     authTokenHeader: 'Account-Token',
     authToken: this.TokenSto.getToken(),
     disableMultipart: false,
@@ -41,6 +40,9 @@ export class VehiclesUploadComponent implements OnInit {
     this.progressRef = this.progress.ref('masterProgress');
     this.uploader.onProgressItem = (progress: any) => {
       console.log(progress['progress']);
+    };
+    this.uploader.onBeforeUploadItem = item => {
+      item.withCredentials = false;
     };
   }
 
@@ -92,15 +94,22 @@ export class VehiclesUploadComponent implements OnInit {
       })
       .toPromise()
       .then(res => {
+        this.uploader.setOptions({
+          url: this.dataSvc.getUploadUrl(res.data.id)
+        });
         this.uploadForm.reset();
         this.progressRef.complete();
-        this.toastr.success('Your Vehicle has been added successfully', null, {
-          closeButton: true,
-          timeOut: 3000
-        });
+        this.toastr.success(
+          'Vehicle has been added\nStarting image upload now.',
+          'Action completed Successfully',
+          {
+            closeButton: false,
+            timeOut: 5000
+          }
+        );
+        this.uploader.uploadAll();
       })
       .catch(err => {
-        this.uploadForm.reset();
         this.progressRef.complete();
         this.toastr.error(
           'Your Vehicle could not be added. Try again later',
@@ -111,7 +120,6 @@ export class VehiclesUploadComponent implements OnInit {
   }
 
   public onFileSelected(event: EventEmitter<File[]>) {
-    const file: File = event[0];
-    console.log(file);
+    console.log(event);
   }
 }
