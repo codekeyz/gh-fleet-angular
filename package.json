@@ -45,6 +45,7 @@
     "firebase": "^5.8.6",
     "flag-icon-css": "^3.2.1",
     "font-awesome": "^4.7.0",
+    "method-override": "^3.0.0",
     "moment": "^2.22.2",
     "mutationobserver-shim": "^0.3.2",
     "ng2-charts": "^1.6.0",
