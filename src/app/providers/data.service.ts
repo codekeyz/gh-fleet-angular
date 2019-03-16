@@ -29,21 +29,9 @@ export class DataService {
     );
   }
 
-  uploadImageforVehicle(vehicleID: string, file) {
-    const headers = new HttpHeaders();
-    // this is the important step. You need to set content type as null
-    headers.set('Content-Type', null);
-    headers.set('Accept', 'multipart/form-data');
-    const formData: FormData = new FormData();
-    formData.append('image', file);
-    return this.httpSvc.post(
-      `${env.apiBaseUrl}/api/v1/users/me/vehicles/${vehicleID}/images/upload`,
-      formData,
-      {
-        headers,
-        reportProgress: true,
-        observe: 'events'
-      }
-    );
+  getUploadUrl(vehicleID: string) {
+    return `${
+      env.apiBaseUrl
+    }/api/v1/users/me/vehicles/${vehicleID}/images/upload`;
   }
 }
