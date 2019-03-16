@@ -12,7 +12,7 @@
     <div class="col-6 col-lg-3">
       <app-widget-one
         [icon]="'fa fa-car'"
-        [title]="((vehicles$ | async)?.count || 0) < 2 ? 'Vehicle' : 'Vehicles'"
+        [title]="'Vehicles'"
         [value]="(vehicles$ | async)?.count || 0"
         [moreText]="'View more'"
         [moreTextLink]="'/me/vehicles'"
