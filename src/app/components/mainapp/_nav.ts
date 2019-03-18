@@ -11,7 +11,7 @@ export const navItems = [
     children: [
       {
         name: 'View',
-        url: '/me/vehicles/view',
+        url: '/me/vehicles/list',
         icon: 'icon-eye'
       },
       {

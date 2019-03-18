@@ -15,18 +15,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'view',
+        redirectTo: 'list',
         pathMatch: 'prefix'
       },
       {
-        path: 'view',
+        path: 'list',
         component: VehiclesViewComponent,
         data: {
-          title: 'View'
+          title: 'List'
         }
       },
       {
-        path: '/view/:id',
+        path: 'view/:id',
         component: VehiclesSingleComponent,
         data: {
           title: 'Vehicle Details'

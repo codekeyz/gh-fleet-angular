@@ -22,11 +22,19 @@
             <td class="text-center">
               <div class="avatar">
                 <img
-                  src="assets/img/avatars/1.jpg"
+                  *ngIf="vehicle.images; else img"
+                  [src]="vehicle.images[0].link"
                   class="img-avatar"
                   alt="admin@bootstrapmaster.com"
                 />
-                <span class="avatar-status badge-success"></span>
+                <ng-template #img>
+                  <i class="fa fa-car"></i>
+                </ng-template>
+                <span
+                  class="avatar-status"
+                  [class.badge-success]="!vehicle.archived"
+                  [class.badge-warning]="vehicle.archived"
+                ></span>
               </div>
             </td>
             <td>
@@ -46,21 +54,27 @@
             </td>
             <td>
               <div class="btn-group float-right" dropdown>
-                <button type="button" class="btn btn-danger">View</button>
+                <button
+                  type="button"
+                  (click)="showDetails(vehicle.id)"
+                  class="btn btn-primary btn-square"
+                >
+                  View
+                </button>
                 <button
                   type="button"
                   dropdownToggle
-                  class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                  class="btn btn-dark btn-square dropdown-toggle dropdown-toggle-split"
                 >
                   <span class="caret"></span>
                   <span class="sr-only">Split button!</span>
                 </button>
                 <ul *dropdownMenu class="dropdown-menu" role="menu">
-                  <li role="menuvehicle">
-                    <a class="dropdown-vehicle" href="#">Edit</a>
+                  <li role="menuitem">
+                    <a class="dropdown-item" href="#">Edit</a>
                   </li>
-                  <li role="menuvehicle">
-                    <a class="dropdown-vehicle" href="#">Delete</a>
+                  <li role="menuitem">
+                    <a class="dropdown-item" href="#">Delete</a>
                   </li>
                 </ul>
               </div>
