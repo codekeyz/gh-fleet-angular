@@ -1,6 +1,7 @@
 <app-header
   [fixed]="true"
   [asideMenuToggler]="false"
+  [mobileAsideMenuToggler]="false"
   [navbarBrandFull]="{
     src: 'assets/favicon.ico',
     width: 30,
@@ -54,7 +55,7 @@
   </ul>
 </app-header>
 <div class="app-body">
-  <app-sidebar [fixed]="true" [display]="'lg'">
+  <app-sidebar [fixed]="true" [display]="'lg'" [minimized]="true">
     <app-sidebar-nav
       role="nav"
       [navItems]="navItems"
