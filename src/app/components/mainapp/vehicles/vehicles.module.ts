@@ -12,6 +12,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImagePreview } from '../../../providers/image-preview.directive';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { ImagePreview } from '../../../providers/image-preview.directive';
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     ProgressbarModule.forRoot(),
+    NgxMaskModule.forRoot(),
     CarouselModule,
     FormsModule,
     ReactiveFormsModule,

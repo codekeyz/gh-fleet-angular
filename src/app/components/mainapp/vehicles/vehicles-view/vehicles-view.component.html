@@ -50,7 +50,7 @@
               <div>{{ vehicle.vehicle_type_name }}</div>
             </td>
             <td>
-              <div>{{ vehicle.license_plate }}</div>
+              <div>{{ vehicle.license_plate | mask: '00-0000-00' }}</div>
             </td>
             <td>
               <div class="btn-group float-right" dropdown>

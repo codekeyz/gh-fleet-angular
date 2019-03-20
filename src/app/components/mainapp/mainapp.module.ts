@@ -15,6 +15,7 @@ import {
   AppSidebarModule
 } from '@coreui/angular';
 import { WidgetOneComponent } from '../widgets/widget-one/widget-one.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 const mainapproutes: Routes = [
   {
@@ -60,6 +61,7 @@ const mainapproutes: Routes = [
     AppFooterModule,
     BsDropdownModule.forRoot(),
     AppBreadcrumbModule.forRoot(),
+    NgxMaskModule.forChild(),
     PerfectScrollbarModule,
     FormsModule,
     RouterModule.forChild(mainapproutes)
