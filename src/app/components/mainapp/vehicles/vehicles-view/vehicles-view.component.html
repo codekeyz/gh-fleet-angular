@@ -22,7 +22,7 @@
             <td class="text-center">
               <div class="avatar">
                 <img
-                  *ngIf="vehicle.images; else img"
+                  *ngIf="vehicle.images.length > 0; else img"
                   [src]="vehicle.images[0].link"
                   class="img-avatar"
                   alt="admin@bootstrapmaster.com"

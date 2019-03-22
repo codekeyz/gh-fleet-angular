@@ -19,17 +19,17 @@ const routes: Routes = [
         pathMatch: 'prefix'
       },
       {
-        path: 'list',
+        path: 'view',
         component: VehiclesViewComponent,
         data: {
-          title: 'List'
+          title: 'View'
         }
       },
       {
         path: 'view/:id',
         component: VehiclesSingleComponent,
         data: {
-          title: 'Vehicle Details'
+          title: 'Details'
         }
       },
       {
