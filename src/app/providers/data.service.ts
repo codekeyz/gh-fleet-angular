@@ -22,6 +22,12 @@ export class DataService {
     });
   }
 
+  getVehicle<T>(id: string) {
+    return this.httpSvc.get<T>(
+      `${env.apiBaseUrl}/api/v1/users/me/vehicles/${id}`
+    );
+  }
+
   addVehicle<T>(data: {}) {
     return this.httpSvc.post<T>(
       `${env.apiBaseUrl}/api/v1/users/me/vehicles`,

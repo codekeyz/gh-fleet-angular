@@ -1,1 +1,95 @@
-<div class="animated fadeIn"></div>
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card">
+        <div class="card-header bg-dark">
+          <i class="fa fa-car"> </i>{{ (vehicle$ | async)?.name }}
+        </div>
+        <div class="card-body" *ngIf="(vehicle$ | async) as $data; else nodata">
+          <div class="row">
+            <div class="col-md-5">
+              <carousel [interval]="10000">
+                <slide *ngFor="let image of $data.images">
+                  <img
+                    [src]="image.link"
+                    [alt]="image.name"
+                    style="display: block; width: 100%;"
+                  />
+                </slide>
+              </carousel>
+            </div>
+            <div class="col-md-7">
+              <form novalidate>
+                <div class="form-group">
+                  <label for="company">Vehicle Name</label>
+                  <input
+                    style="text-transform:capitalize"
+                    class="form-control border-dark"
+                    placeholder="Enter your vehicle name"
+                    [value]="$data.name"
+                    type="text"
+                  />
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="vat">Type</label
+                    ><input
+                      style="text-transform:capitalize"
+                      class="form-control border-dark"
+                      placeholder="TATA, Ford etc."
+                      type="text"
+                      [value]="$data.vehicle_type_name"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="vat">Model</label
+                    ><input
+                      style="text-transform:capitalize"
+                      class="form-control border-dark"
+                      placeholder="TATA, Ford etc."
+                      type="text"
+                      [value]="$data.vehicle_type_model"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="vat">License Number</label
+                  ><input
+                    class="form-control border-dark"
+                    placeholder="TATA, Ford etc."
+                    type="text"
+                    [value]="$data.license_plate"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="ccmonth">Fuel Volume Unit</label>
+                  <input
+                    class="form-control border-dark"
+                    placeholder="TATA, Ford etc."
+                    type="text"
+                    [value]="$data.fuel_volume_units"
+                  />
+                </div>
+
+                <div class="form-group mb-3 mb-xl-0">
+                  <button
+                    class="btn btn-square btn-block btn-primary"
+                    type="button"
+                  >
+                    EDIT
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <ng-template #nodata>
+          <div class="card-body"></div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

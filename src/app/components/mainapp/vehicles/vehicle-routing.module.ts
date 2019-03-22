@@ -13,11 +13,11 @@ const routes: Routes = [
       title: 'Vehicles'
     },
     children: [
-      {
-        path: '',
-        redirectTo: 'view',
-        pathMatch: 'prefix'
-      },
+      // {
+      //   path: '',
+      //   redirectTo: 'view',
+      //   pathMatch: 'prefix'
+      // },
       {
         path: 'view',
         component: VehiclesViewComponent,
