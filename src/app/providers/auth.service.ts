@@ -40,6 +40,6 @@ export class AuthService {
 
   async refresh() {
     const token = await this.afAuth.auth.currentUser.getIdToken();
-    this.tkSt.saveToken(token);
+    await this.tkSt.saveToken(token);
   }
 }

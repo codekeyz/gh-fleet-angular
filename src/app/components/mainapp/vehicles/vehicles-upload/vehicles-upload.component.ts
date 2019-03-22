@@ -60,11 +60,9 @@ export class VehiclesUploadComponent implements OnInit {
         '',
         Validators.compose([Validators.required, Validators.minLength(3)])
       ],
-      color: [''],
       license: [
         '',
         Validators.compose([
-          Validators.required,
           Validators.pattern(/^([a-zA-Z]){2}(-| )[0-9]{4}(-| )[0-9]{2}$/)
         ])
       ],
